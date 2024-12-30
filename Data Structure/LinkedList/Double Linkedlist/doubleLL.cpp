@@ -167,6 +167,8 @@ int main()
     b->next = tail;
     tail->prev = b;
 
+    tail->next = b;
+
     insert_head(head, tail, 600);
     insert_tail(head, tail, 800);
 
@@ -177,6 +179,10 @@ int main()
 
     print_forward(head);
     print_backward(tail);
+
+    cout << endl;
+
+    isCycle(head);
 
 
 

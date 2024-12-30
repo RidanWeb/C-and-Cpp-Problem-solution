@@ -12,7 +12,7 @@ public:
         this->val = val;
         this->next = NULL;
     }
-    
+
 };
 
 void insert_at_head(Node* &head, int val){
@@ -81,6 +81,37 @@ void insert_at_any_pos(Node* &head, int val, int index){
 }
 
 
+void isCycle(Node* &head){
+
+    Node* fast = head;
+    Node* slow = head;
+
+    int flag = 0;
+
+    while(fast->next != NULL){
+
+        fast = fast->next->next;
+        slow = slow->next;
+
+        if(fast == slow){
+
+            flag = 1;
+            break;
+        }
+    }
+
+    if(flag == 1){
+
+        cout << "Cycle" << endl;
+    }else{
+
+        cout << "No Cycle" << endl;
+    }
+
+
+}
+
+
 void print_linkedlist(Node* head){
 
     Node* temp = head;
@@ -121,8 +152,9 @@ int main()
     head->next = b;
     b->next = c;
     c->next = tail;
+    tail->next = b;
 
-    
+
     insert_at_head(head, 300);
     insert_at_head(head, 400);
     insert_at_head(head, 500);
@@ -139,6 +171,8 @@ int main()
 
 
     print_linkedlist(head);
+
+    cout << endl;
 
 
 
