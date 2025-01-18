@@ -21,7 +21,27 @@ class myTree{
 
 void levelOrderTraverse(myTree* root){
 
-    
+    queue<myTree*> q;
+    q.push(root);
+
+    while(!q.empty()){
+
+        //extract queue front element
+        myTree* front = q.front();  //root of tree
+        q.pop();
+
+        //Do operation 
+        cout << front->val << " ";
+
+        //Push Children to the queue
+        if(front->left){
+            q.push(front->left);
+        }
+        if(front->right){
+            q.push(front->right);
+        }
+    }
+
 }
 
 
@@ -47,7 +67,7 @@ int main()
     b->right = f;
 
 
-
+    levelOrderTraverse(root);
 
 
     return 0;
